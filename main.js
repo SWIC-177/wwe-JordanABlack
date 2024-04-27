@@ -1,3 +1,5 @@
 import { CHAMPIONS } from "./src/data";
 
-console.log(CHAMPIONS);
+const sortedChampions = CHAMPIONS.toSorted();
+
+console.log(sortedChampions);
