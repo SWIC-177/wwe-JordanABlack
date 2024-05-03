@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { removeCorrespondingItemsByTerm, getLastName } from "./lib";
+import { removeCorrespondingItemsByTerm, getLastName, merge2ArraysIntoAnArrayOfObjects } from "./lib";
 
 describe("getLastName", () => {
   test("returns the last name from a full name", () => {
@@ -25,8 +25,73 @@ describe("getLastName", () => {
     // Assert
     expect(result).toBe(expected);
   });
+
+  test("returns the last name from a full name with extra spaces at the beginning", () => {
+    // Arrange
+    const fullName ="John Doe";
+    const expected = "Doe";
+
+    // Act
+    const result = getLastName(fullName);
+
+    // Assert
+    expect(result).toBe(expected);
+  });
+
+  test("returns the last name from a full name with extra spaces at the end", () => {
+    // Arrange
+    const fullName ="John Doe";
+    const expected = "Doe";
+
+    // Act
+    const result = getLastName(fullName);
+
+    // Assert
+    expect(result).toBe(expected);
+  });
+
+  test("returns the last name from a multi-word full name", () => {
+    // Arrange
+    const fullName ="John Doe";
+    const expected = "Doe";
+
+    // Act
+    const result = getLastName(fullName);
+
+    // Assert
+    expect(result).toBe(expected);
+  });
+
+  test("returns the last name with special characters", () => {
+    // Arrange
+    const fullName ="Starsky and Hutch";
+    const expected = "Hutch";
+
+    // Act
+    const result = getLastName(fullName);
+
+    // Assert
+    expect(result).toBe(expected);
+  });
 });
 
+test("merge2ArraysIntoAnArrayOfObjects", () => {
+  // Arrange
+  const a1 = ["title1", "title2", "title3"];
+  const a2 = ["champion1", "champion2", "champion3"];
+  const key1 = "title";
+  const key2 = "champion";
+
+  const expected = [
+    { title: "title1", champion: "champion1" },
+    { title: "title2", champion: "champion2" },
+    { title: "title3", champion: "champion3" },
+  ];
+  // Act 
+  const result = merge2ArraysIntoAnArrayOfObjects({ a1, a2, key1, key2 });
+  // Assert
+  expect(result).toEqual(expected);
+});
 test("removeCorrespondingItemsByTerm", () => {
   // Arrange
   const terms1 = ["term1", "term2", "term3"];
