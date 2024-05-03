@@ -1,19 +1,22 @@
-/**
- * @typedef {Object} RemoveCorrespondingItemsByTermArgs
- * @property {string[]} terms1
- * @property {string[]} terms2
- * @property {string} filterTerm
- */
-/**
- * @typedef {Object} Terms
- * @property {string[]} terms1
- * @property {string[]} terms2
- */
+export function getLastName(fullName) {
+  const splitName = fullName.split(" ");
+  return splitName[splitName.length - 1];
+}
 
-/**
- * @param {RemoveCorrespondingItemsByTermArgs} args
- * @returns {Terms}
- */
+export function merge2ArraysIntoAnArrayOfObjects({ a1, a2, key1, key2 }) {
+  return a1.reduce((acc, item, index) => { 
+    const accumulatedResults2Modify = [...acc];
+
+    return [
+      ...accumulatedResults2Modify, 
+      {
+      [key1]: item,
+      [key2]: a2[index],
+    },
+  ];
+  }, []);
+}
+
 export function removeCorrespondingItemsByTerm({ terms1, terms2, filterTerm }) {
   return terms1.reduce(
     (accumulatedResults, term, index) => {
