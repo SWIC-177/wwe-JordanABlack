@@ -1,22 +1,8 @@
-const CHAMPIONSHIPS = [
-    {
-      title: "NBA Championship",
-      champion: "Los Angeles Lakers"
-    },
-    {
-      title: "Super Bowl",
-      champion: "Tampa Bay Buccaneers"
-    },
-    {
-      title: "FIFA World Cup",
-      champion: "France"
-    },
-    
-  ];
+import { CHAMPIONS } from "./src/data";
+import { getLastName } from "./src/lib";
+
+const sortedChampions = CHAMPIONS.toSorted((a, b) =>
+  getLastName(a).localeCompare(getLastName(b)),
+);
   
-  console.log(CHAMPIONSHIPS[0].title); 
-  console.log(CHAMPIONSHIPS[0].champion);
-  console.log(CHAMPIONSHIPS[1].title); 
-  console.log(CHAMPIONSHIPS[1].champion);
-  console.log(CHAMPIONSHIPS[2].title); 
-  console.log(CHAMPIONSHIPS[2].champion);   
+console.log(sortedChampions);
