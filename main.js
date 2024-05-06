@@ -5,4 +5,4 @@ const sortedChampions = CHAMPIONS.toSorted((a, b) =>
   getLastName(a).localeCompare(getLastName(b)),
 );
   
-console.log(sortedChampions);
+console.log(sortedChampions); 
